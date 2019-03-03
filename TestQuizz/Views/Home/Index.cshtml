@@ -1,0 +1,196 @@
+﻿@model TestQuizz.ViewModels.QuizModel
+
+@{
+    ViewData["Title"] = "Задачи";
+    IDictionary<string, bool> acc = new Dictionary<string, bool>();
+}
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js"></script>
+</environment>
+
+<script>
+    var MyAppUrlSettings = {
+        Quiz1: '@Url.Action("Quiz1","Home")',
+        Quiz2: '@Url.Action("Quiz2","Home")',
+        Quiz3: '@Url.Action("Quiz3","Home")',
+        Quiz4: '@Url.Action("Quiz4","Home")',
+        Quiz5: '@Url.Action("Quiz5","Home")',
+        Quiz6: '@Url.Action("Quiz6","Home")',
+        Quiz7: '@Url.Action("Quiz7","Home")'   
+}
+</script>
+
+
+@foreach (var claim in User.Claims.ToList())
+{
+    if (claim.Type.StartsWith("acc"))
+    {
+        acc.Add(claim.Type, bool.Parse(claim.Value));
+    }
+}
+
+
+
+<div class="task-group">
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc0").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>1: Перевод числа в двоичную систему</p>
+                <label>Введите целочисленное значение: </label>
+                <div><input id="quiz1Input" /></div>
+                <label class="field-validation-error" id="q1warning"></label>
+
+                <div>
+                    <textarea id="quiz1Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz1btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc1").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>2: Перевод числа в шестнадцатеричную систему</p>
+                <label>Введите целочисленное значение: </label>
+                <div><input id="quiz2Input" /></div>
+                <label class="field-validation-error" id="q2warning"></label>
+
+                <div>
+                    <textarea id="quiz2Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz2btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc2").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>
+                    3: Создание массива из N (входное число) случайных элементов (от 0 до
+                    2048), отсортировать алгоритм любыми 3 способами, посчитать число четных
+                    элементов.
+                </p>
+                <label>Введите целочисленное значение: </label>
+                <div><input id="quiz3Input" /></div>
+                <label class="field-validation-error" id="q3warning"></label>
+
+                <div>
+                    <textarea id="quiz3Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz3btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc3").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>
+                    4: Создание массива из N (входное число) чисел Фибоначчи.
+                </p>
+                <label>Введите целочисленное значение от 1 до 30: </label>
+                <div><input id="quiz4Input" /></div>
+                <label class="field-validation-error" id="q4warning"></label>
+
+                <div>
+                    <textarea id="quiz4Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz4btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc4").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>
+                    5: Сохранение пользователя в системе.
+                </p>
+                <label>Введите строку разделенную символом "/" (например login/password) </label>
+                <div><input id="quiz5Input" /></div>
+                <label class="field-validation-error" id="q5warning"></label>
+
+                <div>
+                    <textarea id="quiz5Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz5btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc5").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>
+                    6: Разделение логина и прав при помощи "/", разделение прав при помощи ";".
+                </p>
+                <label>
+                    Строка c логином пользователя и правами доступа к формам
+                    (формы имеют буквенные название а,б,в).
+                </label>
+                <div><input id="quiz6Input" /></div>
+                <label class="field-validation-error" id="q6warning"></label>
+
+                <div>
+                    <textarea id="quiz6Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz6btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+    @if (acc.FirstOrDefault(t => t.Key == "acc6").Value)
+    {
+        <form>
+            <div class="quiz-container">
+                <p>
+                    7: Переворот, не используя знаков препинания.
+                </p>
+                <label>
+                    Строка.
+                </label>
+                <div><input id="quiz7Input" /></div>
+                <label class="field-validation-error" id="q7warning"></label>
+
+                <div>
+                    <textarea id="quiz7Answer" readonly></textarea>
+                </div>
+
+                <div>
+                    <input id="quiz7btn" type="submit" value="Ok" />
+                </div>
+            </div>
+        </form>
+    }
+
+</div>

@@ -1,0 +1,28 @@
+﻿@model List<TestQuizz.Models.User>
+@{
+    ViewData["Title"] = "History";
+}
+<h2>История</h2>
+
+@foreach (var user in Model)
+{
+<div>
+    <p>Дата и время аутентификации :</p>
+    <table class="table">
+        <tr><td>Пользователь</td><td>Время</td></tr>
+            <tr><td>@user.UserName</td><td>@user.LastLogin.ToString("F")</td></tr>
+    </table>
+</div>
+<div>
+    
+    <p>Задачи выполненные пользователями</p>
+    <table class="table">
+        <tr><td>Пользователь</td><td>Задача</td><td>Ввод</td><td>Вывод</td></tr>
+        @foreach (var quiz in user.Quizes)
+        {
+            <tr><td>@user.UserName</td><td>@quiz.TaskNumber</td><td>@quiz.Input</td><td>@quiz.Output</td></tr>
+        }
+    </table>
+</div>
+}
+

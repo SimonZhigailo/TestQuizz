@@ -1,0 +1,55 @@
+﻿@model TestQuizz.ViewModels.RegisterModel
+
+<h2>Регистрация</h2>
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+<form asp-action="Register" asp-controller="Account" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="UserName">Введите Имя   </label><br />
+            <input type="text" asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+        <div>
+            <label asp-for="Password">Введите пароль</label><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div>
+            <label>Настройте доступ к задачам: </label>
+            1
+            <input asp-for="Access[0]" type="checkbox"  />
+
+            2
+            <input asp-for="Access[1]" type="checkbox"/>
+
+            3
+            <input asp-for="Access[2]" type="checkbox" />
+
+            4
+            <input asp-for="Access[3]" type="checkbox" />
+
+            5
+            <input asp-for="Access[4]" type="checkbox" />
+
+            6
+            <input asp-for="Access[5]" type="checkbox" />
+
+            7
+            <input asp-for="Access[6]" type="checkbox"/>
+
+        </div>
+        <div>
+            <input type="submit" value="Регистрация" />
+        </div>
+    </div>
+</form>
+
